@@ -1,3 +1,7 @@
-# Project context
+# Prompt Instructions
 
-At the start of each prompt, read the appropriate files in the project to understand the relevant context, conventions, and instructions. Before acting, check whether the request matches a local workflow in `.agents/skills/*/SKILL.md` and read the instructions for each matching skill. Read only skills relevant to the request. If the project files and matching skills do not make the required context clear, ask for direction on what context to gather before acting.
+Before starting a prompt, read the project readme. Then use the $development-tracker to record the completed task and its handoff details.
+
+# Project Context
+
+Project context may be provided via the project-context skill, with `.agents/context/context-library.md` giving a high-level overview of the project context available.

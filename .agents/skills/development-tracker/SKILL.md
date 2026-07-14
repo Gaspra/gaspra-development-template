@@ -15,7 +15,7 @@ A single conversation thread (or task sequence) corresponds to a single agent co
 2. **Resolve the Agent Codename**:
    - Check the agent roster in `.agents/development/development-agents.md`. If the current `Conversation ID` is already listed, reuse that codename.
    - If the user explicitly provided or requested a codename to assume/resume, use that codename.
-   - Otherwise, create a unique, human-readable codename of three lowercase words joined by hyphens (e.g., `docs-role-planner`). Check the roster first to ensure it is not already in use.
+   - Otherwise, create a unique, human-readable codename of three random lowercase words joined by hyphens (e.g. `orange-envelope-butterfly`). Check the roster first to ensure it is not already in use.
 3. **Register Agent Persona & Role**:
    - Choose a concise role that best describes the task or persona (e.g., `Developer`, `Project Manager`).
    - If this is a new agent codename:
@@ -24,6 +24,8 @@ A single conversation thread (or task sequence) corresponds to a single agent co
      - Add the agent to the roster in `.agents/development/development-agents.md`, mapping it to the current `Conversation ID`.
    - If resuming an existing agent codename:
      - Add the current `Conversation ID` to the agent's entry in `.agents/development/development-agents.md` if it is not already listed.
+4. **Load Instructions**:
+   - If `.agents/development/<codename>/instructions.md` exists in the agent directory, read it. Use this file as the primary source of requirements and task definition.
 
 ### format for `agent.md`
 ```markdown
@@ -42,10 +44,13 @@ A single conversation thread (or task sequence) corresponds to a single agent co
 ## Complete a task/prompt
 
 Each time a prompt/task completes work in the project (adding, updating, or deleting files):
-1. **Append to Agent Journal**: Add a chronological entry to `.agents/development/<codename>/journal.md`. If the journal does not exist, create it. Use the format below for journal entries.
-2. **Update Index**: Update `.agents/development/development-agents.md`:
+1. **Update Instructions Progress** (if applicable):
+   - Mark checklist items as completed `[x]` in `.agents/development/<codename>/instructions.md`.
+   - If all instructions are completed, update the header in `instructions.md` to set `Status: Completed`.
+2. **Append to Agent Journal**: Add a chronological entry to `.agents/development/<codename>/journal.md`. If the journal does not exist, create it. Use the format below for journal entries.
+3. **Update Index**: Update `.agents/development/development-agents.md`:
    - Under `Recent completed work`, prepend one newest-first entry linking to the updated `journal.md` with a one-line summary of the prompt's outcome.
-3. **Verify**: Ensure the journal entry is correctly formatted, all file links use relative paths or workspace-friendly URLs, and the Recent completed work link resolves correctly.
+4. **Verify**: Ensure the journal entry is correctly formatted, all file links use relative paths or workspace-friendly URLs, and the Recent completed work link resolves correctly.
 
 ### format for `journal.md`
 ```markdown

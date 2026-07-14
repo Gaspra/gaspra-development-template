@@ -4,8 +4,8 @@ Use this index to identify reusable agent codenames and locate the most relevant
 
 ## Agent roster
 
-| Codename | Role | Durable notes |
-| --- | --- | --- |
+| Codename | Role | Active Conversation IDs | Durable notes |
+| --- | --- | --- | --- |
 
 ## Recent completed work
 

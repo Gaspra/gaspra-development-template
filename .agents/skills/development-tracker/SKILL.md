@@ -7,54 +7,67 @@ description: Record durable, project-local history for completed AI-agent tasks.
 
 Record completed work in `.agents/development`. Keep the skill reusable; never store project history inside the skill directory.
 
+A single conversation thread (or task sequence) corresponds to a single agent codename. All prompts within the same conversation thread must reuse the same codename to record their persona and chronological activity journal.
+
 ## Start of task
 
-1. Read `.agents/development/development-agents.md`. Open only task records relevant to the current work.
-2. Capture the task start timestamp in local ISO 8601 format with a timezone when available.
-3. Resolve the agent codename:
-   - Use a user-supplied codename when one is provided.
-   - Reuse the existing codename for the same recurring role or workstream when one is suitable.
-   - Otherwise create a unique, human-readable codename of three lowercase words joined by hyphens. Check the agent roster and `.agents/development` directories before choosing it.
-4. Use the user-supplied role when available. Otherwise choose the concise role that best describes the task.
+1. **Identify the Conversation ID**: Get the current Conversation ID from the session metadata or logs.
+2. **Resolve the Agent Codename**:
+   - Check the agent roster in `.agents/development/development-agents.md`. If the current `Conversation ID` is already listed, reuse that codename.
+   - If the user explicitly provided or requested a codename to assume/resume, use that codename.
+   - Otherwise, create a unique, human-readable codename of three lowercase words joined by hyphens (e.g., `docs-role-planner`). Check the roster first to ensure it is not already in use.
+3. **Register Agent Persona & Role**:
+   - Choose a concise role that best describes the task or persona (e.g., `Developer`, `Project Manager`).
+   - If this is a new agent codename:
+     - Create the agent directory `.agents/development/<codename>/`.
+     - Create `.agents/development/<codename>/agent.md` using the format below.
+     - Add the agent to the roster in `.agents/development/development-agents.md`, mapping it to the current `Conversation ID`.
+   - If resuming an existing agent codename:
+     - Add the current `Conversation ID` to the agent's entry in `.agents/development/development-agents.md` if it is not already listed.
 
-## Complete a task
+### format for `agent.md`
+```markdown
+# Agent: <codename>
 
-1. Create one completion record at `.agents/development/<codename>/YYYYMMDD-HHmm-<task-slug>.md`, using the task start time in the filename. Use a lowercase hyphenated task slug. If the path exists, append `-2`, then increment the suffix until the path is unique.
-2. Write the record in this format:
+- **Assigned Role**: <role>
+- **Active Conversation IDs**:
+  - `<Conversation ID 1>`
+  - `<Conversation ID 2>`
 
-   ```markdown
-   # <Task title>
+## Persona & Context
 
-   - Agent codename: <codename>
-   - Agent role: <role>
-   - Prompt timestamp: <ISO 8601 timestamp>
-   - Completion timestamp: <ISO 8601 timestamp>
-   - Time to complete: <duration>
+<Brief description of the agent's purpose, background instructions, and context details.>
+```
 
-   ## Summary
+## Complete a task/prompt
 
-   <Concise handover for future agents.>
+Each time a prompt/task completes work in the project (adding, updating, or deleting files):
+1. **Append to Agent Journal**: Add a chronological entry to `.agents/development/<codename>/journal.md`. If the journal does not exist, create it. Use the format below for journal entries.
+2. **Update Index**: Update `.agents/development/development-agents.md`:
+   - Under `Recent completed work`, prepend one newest-first entry linking to the updated `journal.md` with a one-line summary of the prompt's outcome.
+3. **Verify**: Ensure the journal entry is correctly formatted, all file links use relative paths or workspace-friendly URLs, and the Recent completed work link resolves correctly.
 
-   ## Decisions
+### format for `journal.md`
+```markdown
+# Activity Journal: <codename>
 
-   - <Decision and rationale, or `None beyond completing the requested task.`>
+## [<ISO 8601 Timestamp>] - <Task Title>
 
-   ## Validation
+- **Time to Complete**: <duration>
+- **Key Outcomes**:
+  - <Summary of files created, modified, or deleted, e.g. modified [AGENTS.md](file:///path/to/AGENTS.md)>
+- **Key Decisions**:
+  - <Decisions and rationale, or `None beyond completing the requested task.`>
+- **Validation**:
+  - <Checks performed and their outcome, or `Not applicable.`>
+- **Follow-ups**:
+  - <Required follow-up, or `None.`>
 
-   - <Checks performed and their outcome, or `Not applicable.`>
-
-   ## Follow-ups
-
-   - <Required follow-up, or `None.`>
-   ```
-
-3. Update `.agents/development/development-agents.md`:
-   - Add the codename, role, and concise durable notes to the agent roster when it is new. Update notes only when durable role or handoff context changes.
-   - Prepend one newest-first entry to Recent completed work, linking to the new record and summarising its purpose in one line.
-4. Verify that the record path exists, the agent roster matches the record metadata, and the Recent completed work link resolves to the record.
+---
+```
 
 ## Boundaries
 
-- Create records only when a task is complete. Do not create in-progress logs or separate progress entries.
-- Keep records compact. Preserve decisions, validation, and follow-ups; do not reproduce full prompts, command logs, or file-by-file diffs.
-- Do not overwrite an existing record or modify unrelated agent history.
+- Keep journal entries compact. Focus on outcomes, decisions, and validations; do not reproduce full prompts, terminal command outputs, or file-by-file diffs.
+- Do not overwrite previous entries in `journal.md` when logging new outcomes. Always append new entries to the end or beginning of the journal file.
+- Do not modify unrelated agent history.

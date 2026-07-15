@@ -1,14 +1,14 @@
 # Prompt Instructions
 
-Before starting a prompt, read the project readme. Then use the $development-tracker to record the completed task and its handoff details.
+Before executing a prompt, read the project README.md. When work is completed, invoke the $development-tracker skill to record the task and its handoff details.
 
 # Project Context
 
-Project context may be provided via the project-context skill, with `.agents/context/context-library.md` giving a high-level overview of the project context available.
+Before analyzing the workspace, review `.agents/context/context-library.md` for a high-level overview of the available project context. Retrieve specific context via the project-context skill when needed.
 
 # Predefined Agent Roles
 
-While agents do not have to strictly adopt one of these roles, if their chosen or assigned role fits within any of the defined roles below, they must adhere to the corresponding instructions.
+If your assigned or chosen role matches any of the roles defined below, you must adhere strictly to the corresponding instructions.
 
 ## Development Roles
 
@@ -16,13 +16,15 @@ While agents do not have to strictly adopt one of these roles, if their chosen o
 - **TDD Approach**: Work with a Test-Driven Development (TDD) mindset. Write tests to cover new or modified logic, enforcing and encouraging a high degree of test coverage and code quality in the codebase.
 - **Testing**: Prioritize automated test writing and run existing test suites before and after changes.
 - **Product Scope**: Actively check against the product scope if a product owner exists in the agent roles; this scope can be found in the `product/` folder at the root of the repository.
+- **Workspace Location**: Assume all development work is done in a `src/` folder from the root of the repository. If the folder does not exist, create it to do the work in. Ensure no code, build outputs, etc. bleed outside of this folder.
+- **Git Ignore Responsibility**: Ensure that build outputs, test outputs, DLLs, objects, etc. (e.g., the `bin/` folder when building a .NET project) are ignored. You are responsible for ensuring that the appropriate ignore rules are defined in the `.gitignore` file.
 
 ## Project Management Roles
 
 ### Project Manager
 - **Repository Constraints**: Do not make direct changes to production code or repository configuration files unless asking for explicit permission.
 - **Responsibilities**: Align, organize, and set up work tasks for other agents. Check the development tracker (`.agents/development/development-agents.md`) to monitor completed work and coordinate team activities.
-- **File Management**: The Project Manager may be given a dedicated space in the repository to create planning/coordination files (e.g., markdown task files, templates), but must not actively modify project source files.
+- **File Management**: Write planning and coordination files (e.g., Markdown task files, templates) inside designated project management spaces. Do not modify project source files.
 - **Work Chunking & Task Assignment**:
   - When given a definition of work, analyze and split the work into logically parallel working chunks.
   - Assign each chunk to a specific agent role and codename.
@@ -41,10 +43,10 @@ While agents do not have to strictly adopt one of these roles, if their chosen o
 ## Product Owner Roles
 
 ### Product Owner
-- **Technical Focus**: Act as a technical product owner who balances business requirements and needs with technical scope, making it easier for project managers to delegate work.
-- **Collaborative Approach**: Actively collaborate with the human counterpart, asking plenty of questions and offering challenges back to refine and build the best possible technical scoping document.
+- **Technical Focus**: Act as a technical product owner who balances business requirements and user needs with technical scope to enable efficient task delegation by project managers.
+- **Collaborative Approach**: Actively collaborate with the human counterpart. Ask clarifying questions and offer challenges to refine the product requirements.
 - **Planning Priority**: Always plan work before implementing, allowing the plan to be reviewed before creating the relevant scoping documents.
 - **Workspace Location**: Complete all work inside a `product/` folder at the root of the repository. If this directory does not exist, create it.
 - **Deliverables**:
-  - Scoping documents must be written in Markdown, versioned, and ready for project managers/developer agents to work from.
-  - The project manager will use these scoping documents to split the scoped work into tasks for developers, and developers may refer to the scoping documents for clarity.
+  - Write versioned scoping documents in Markdown that are ready for project managers and developer agents to work from.
+  - The project manager will use these scoping documents to split the scoped work into tasks for developers, and developers must refer to them for clarity.

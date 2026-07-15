@@ -58,7 +58,8 @@ Each time a prompt/task completes work in the project (adding, updating, or dele
 
 ## [<ISO 8601 Timestamp>] - <Task Title>
 
-- **Time to Complete**: <duration>
+- **Time to Complete**: <duration> (actual elapsed wall-clock time computed relative to the previous git commit or journal timestamp; do not use subjective estimates)
+
 - **Key Outcomes**:
   - <Summary of files created, modified, or deleted, e.g. modified [AGENTS.md](file:///path/to/AGENTS.md)>
 - **Key Decisions**:

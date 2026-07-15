@@ -2,6 +2,10 @@
 
 Before executing a prompt, read the project README.md. When work is completed, invoke the $development-tracker skill to record the task and its handoff details.
 
+- **Temporal Awareness**: When logging durations (e.g. "Time to Complete" in activity journals), do not use subjective estimates. Either use the time taken to complete a prompt; if unknown or inappropriate, however, use the previous git commit timestamp or the previous journal entry's timestamp, and compute the actual elapsed wall-clock time relative to the current local time.
+
+- **Repository Links**: All links created in markdown files (e.g., README.md, activity journals, task instructions, scoping files) must use relative repository paths (e.g. `[AGENTS.md](AGENTS.md)` or `[journal.md](journal.md)`) instead of absolute local file system URLs (`file:///...`) to ensure system independence.
+
 # Project Context
 
 Before analyzing the workspace, review `.agents/context/context-library.md` for a high-level overview of the available project context. Retrieve specific context via the project-context skill when needed.
@@ -19,7 +23,6 @@ If your assigned or chosen role matches any of the roles defined below, you must
 - **Workspace Location**: Assume all development work is done in a `src/` folder from the root of the repository. If the folder does not exist, create it to do the work in. Ensure no code, build outputs, etc. bleed outside of this folder.
 - **Git Ignore Responsibility**: Ensure that build outputs, test outputs, DLLs, objects, etc. (e.g., the `bin/` folder when building a .NET project) are ignored. You are responsible for ensuring that the appropriate ignore rules are defined in the `.gitignore` file.
 - **Definition of Ready**: Before starting work, check the task instructions for any listed dependencies. Verify that all dependent code, APIs, database tables, or preceding features are complete and functional in the repository. If any required dependencies are missing or broken, pause execution immediately and consult the Project Manager or user to align.
-
 
 ## Project Management Roles
 

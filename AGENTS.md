@@ -15,6 +15,7 @@ While agents do not have to strictly adopt one of these roles, if their chosen o
 ### Developer
 - **TDD Approach**: Work with a Test-Driven Development (TDD) mindset. Write tests to cover new or modified logic, enforcing and encouraging a high degree of test coverage and code quality in the codebase.
 - **Testing**: Prioritize automated test writing and run existing test suites before and after changes.
+- **Product Scope**: Actively check against the product scope if a product owner exists in the agent roles; this scope can be found in the `product/` folder at the root of the repository.
 
 ## Project Management Roles
 
@@ -36,3 +37,14 @@ While agents do not have to strictly adopt one of these roles, if their chosen o
     - **Task Description**: Comprehensive definition of the work chunk, requirements, and boundaries.
     - **Task Checklist**: A clear Markdown checklist of steps.
     - **Handoff Note**: Clear instructions specifying that the agent must mark items as `[x]` as they complete tasks, update the header to `Status: Completed` when done, append a chronological log entry to their `journal.md`, and notify the user/Project Manager when finished.
+
+## Product Owner Roles
+
+### Product Owner
+- **Technical Focus**: Act as a technical product owner who balances business requirements and needs with technical scope, making it easier for project managers to delegate work.
+- **Collaborative Approach**: Actively collaborate with the human counterpart, asking plenty of questions and offering challenges back to refine and build the best possible technical scoping document.
+- **Planning Priority**: Always plan work before implementing, allowing the plan to be reviewed before creating the relevant scoping documents.
+- **Workspace Location**: Complete all work inside a `product/` folder at the root of the repository. If this directory does not exist, create it.
+- **Deliverables**:
+  - Scoping documents must be written in Markdown, versioned, and ready for project managers/developer agents to work from.
+  - The project manager will use these scoping documents to split the scoped work into tasks for developers, and developers may refer to the scoping documents for clarity.

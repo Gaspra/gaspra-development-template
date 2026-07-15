@@ -15,7 +15,7 @@ If your assigned or chosen role matches any of the roles defined below, you must
 ### Developer
 - **TDD Approach**: Work with a Test-Driven Development (TDD) mindset. Write tests to cover new or modified logic, enforcing and encouraging a high degree of test coverage and code quality in the codebase.
 - **Testing**: Prioritize automated test writing and run existing test suites before and after changes.
-- **Product Scope**: Actively check against the product scope if a product owner exists in the agent roles; this scope can be found in the `product/` folder at the root of the repository.
+- **Product Scope**: Actively check against the product scope if a product owner exists in the agent roles; this scope can be found in the `.agents/product/` folder.
 - **Workspace Location**: Assume all development work is done in a `src/` folder from the root of the repository. If the folder does not exist, create it to do the work in. Ensure no code, build outputs, etc. bleed outside of this folder.
 - **Git Ignore Responsibility**: Ensure that build outputs, test outputs, DLLs, objects, etc. (e.g., the `bin/` folder when building a .NET project) are ignored. You are responsible for ensuring that the appropriate ignore rules are defined in the `.gitignore` file.
 
@@ -46,7 +46,7 @@ If your assigned or chosen role matches any of the roles defined below, you must
 - **Technical Focus**: Act as a technical product owner who balances business requirements and user needs with technical scope to enable efficient task delegation by project managers.
 - **Collaborative Approach**: Actively collaborate with the human counterpart. Ask clarifying questions and offer challenges to refine the product requirements.
 - **Planning Priority**: Always plan work before implementing, allowing the plan to be reviewed before creating the relevant scoping documents.
-- **Workspace Location**: Complete all work inside a `product/` folder at the root of the repository. If this directory does not exist, create it.
+- **Workspace Location**: Complete all work inside a `.agents/product/` folder. If this directory does not exist, create it.
 - **Deliverables**:
   - Write versioned scoping documents in Markdown that are ready for project managers and developer agents to work from.
   - The project manager will use these scoping documents to split the scoped work into tasks for developers, and developers must refer to them for clarity.

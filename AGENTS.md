@@ -18,6 +18,8 @@ If your assigned or chosen role matches any of the roles defined below, you must
 - **Product Scope**: Actively check against the product scope if a product owner exists in the agent roles; this scope can be found in the `.agents/product/` folder.
 - **Workspace Location**: Assume all development work is done in a `src/` folder from the root of the repository. If the folder does not exist, create it to do the work in. Ensure no code, build outputs, etc. bleed outside of this folder.
 - **Git Ignore Responsibility**: Ensure that build outputs, test outputs, DLLs, objects, etc. (e.g., the `bin/` folder when building a .NET project) are ignored. You are responsible for ensuring that the appropriate ignore rules are defined in the `.gitignore` file.
+- **Definition of Ready**: Before starting work, check the task instructions for any listed dependencies. Verify that all dependent code, APIs, database tables, or preceding features are complete and functional in the repository. If any required dependencies are missing or broken, pause execution immediately and consult the Project Manager or user to align.
+
 
 ## Project Management Roles
 
@@ -27,6 +29,7 @@ If your assigned or chosen role matches any of the roles defined below, you must
 - **File Management**: Write planning and coordination files (e.g., Markdown task files, templates) inside designated project management spaces. Do not modify project source files.
 - **Work Chunking & Task Assignment**:
   - When given a definition of work, analyze and split the work into logically parallel working chunks.
+  - Identify task dependencies (e.g., frontend depending on backend updates) and determine their phasing order.
   - Assign each chunk to a specific agent role and codename.
 - **Agent Initialization**:
   - If a new agent or role needs to be created, create its development tracker space:
@@ -36,6 +39,7 @@ If your assigned or chosen role matches any of the roles defined below, you must
 - **Instruction Delivery & Handoff**:
   - Create `.agents/development/<codename>/instructions.md` inside each assigned agent's directory containing:
     - **Header**: Active metadata including `Status: Pending`.
+    - **Definition of Ready**: Clear list of preceding tasks, branches merged, or system states required before the agent begins.
     - **Task Description**: Comprehensive definition of the work chunk, requirements, and boundaries.
     - **Task Checklist**: A clear Markdown checklist of steps.
     - **Handoff Note**: Clear instructions specifying that the agent must mark items as `[x]` as they complete tasks, update the header to `Status: Completed` when done, append a chronological log entry to their `journal.md`, and notify the user/Project Manager when finished.

@@ -3,6 +3,27 @@
 
 This is a template repository for building agentic projects. It is intended to be used as a starting point for new projects and can be customized to fit the specific needs of the project.
 
+## Usage
+
+There are pre-defined roles in the agents file to help setup an orchestrated development team with a product owner, project manager and developers. A human-orchestrator is needed to kickoff work and aid coordination depending on the defined project.
+
+```mermaid
+flowchart LR
+    po["Product Owner\nAgent"]
+    pm["Project Manager\nAgent"]
+    dev1["Developer\nAgent"]
+    dev2["Developer\nAgent"]
+    dev3["Developer\nAgent"]
+    dev4["Developer\nAgent"]
+
+    po --> |"Creates a product scope to be split into work tasks."| pm
+    pm --> |"After a phase of work, check with PO to confirm aligned progress."| po
+    pm --> dev1
+    pm --> dev2
+    pm --> dev3
+    pm --> dev4
+```
+
 ## Template structure
 
 Below is the directory structure provided out-of-the-box by this template:

@@ -44,6 +44,8 @@ Below is the directory structure provided out-of-the-box by this template:
 │           └── SKILL.md
 ├── src/
 │   └── .gitkeep
+├── temp/
+│   └── README.md
 ├── AGENTS.md
 └── README.md
 ```
@@ -56,8 +58,9 @@ Below is the directory structure provided out-of-the-box by this template:
 | **Agent Task Registry** | [.agents/development/development-agents.md](.agents/development/development-agents.md) | Maps agent codenames and conversation IDs to durability notes and recent work logs. |
 | **Context Library Catalog** | [.agents/context/context-library.md](.agents/context/context-library.md) | Indexes reusable context documents so agents can quickly identify and consume relevant workspace information. |
 | **Product Scoping Folder** | [.agents/product/](.agents/product/) | Contains scoping documents and product requirements created by the Product Owner. |
-| **Context Sorter Skill** | [.agents/skills/context-sorter/SKILL.md](.agents/skills/context-sorter/SKILL.md) | Automates the workflow of importing files/folders into the context library and updating the catalog. |
+| **Context Sorter Skill** | [.agents/skills/context-sorter/SKILL.md](.agents/skills/context-sorter/SKILL.md) | Automates the workflow of importing, analysing, generating meta commentary, and contextualising files into the context library. |
 | **Development Tracker Skill** | [.agents/skills/development-tracker/SKILL.md](.agents/skills/development-tracker/SKILL.md) | Automates registering new agent identities, tracking tasks, updating the roster, and logging activities in journals. |
+| **Context Staging Folder** | [temp/](temp/) | Pre-configured staging area for raw files awaiting analysis, contextualisation, meta commentary generation, relocation to `.agents/context/`, and cleanup. |
 
 > [!IMPORTANT]
 > **Template Setup Instruction for Agents:**

@@ -8,7 +8,13 @@ Before executing a prompt, read the project README.md. When work is completed, i
 
 # Project Context
 
-Before analyzing the workspace, review `.agents/context/context-library.md` for a high-level overview of the available project context. Retrieve specific context via the project-context skill when needed.
+Before analyzing the workspace, review `.agents/context/context-library.md` for a high-level overview of the available project context. Retrieve specific context via the context-sorter skill when needed.
+
+- **Context Staging (`temp/`)**: When requested to contextualise, ingest, or process a file, look in the `temp/` staging folder at the root of the repository. Do not simply move the file:
+  - Deeply inspect and analyze the file content.
+  - Relocate the file into `.agents/context/` (or an appropriate logical subfolder).
+  - Formulate a meta commentary capturing key domain concepts, architectural patterns, constraints, and role-based usage guidance, updating `.agents/context/context-library.md` (and creating a companion summary document in `.agents/context/` if the material is dense or complex).
+  - Delete the original file from `temp/` once safely relocated and indexed so the staging folder remains clean.
 
 # Predefined Agent Roles
 
@@ -29,6 +35,7 @@ If your assigned or chosen role matches any of the roles defined below, you must
 ### Project Manager
 - **Repository Constraints**: Do not make direct changes to production code or repository configuration files unless asking for explicit permission.
 - **Responsibilities**: Align, organize, and set up work tasks for other agents. Check the development tracker (`.agents/development/development-agents.md`) to monitor completed work and coordinate team activities.
+- **Context Staging Awareness**: The `temp/` folder at the repository root is pre-configured for staging raw context files. When organizing or delegating context ingestion tasks, direct agents to process and analyse staged files from `temp/`, generate meta commentary in `.agents/context/context-library.md`, and clean up `temp/` rather than creating ad-hoc staging directories.
 - **File Management**: Write planning and coordination files (e.g., Markdown task files, templates) inside designated project management spaces. Do not modify project source files.
 - **Work Chunking & Task Assignment**:
   - When given a definition of work, analyze and split the work into logically parallel working chunks.
